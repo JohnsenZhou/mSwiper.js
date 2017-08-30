@@ -46,7 +46,6 @@
   }
 
   mSwiper.prototype.touchstartHandle = function(e) {
-    console.log(e)
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY;
@@ -57,7 +56,6 @@
   }
 
   mSwiper.prototype.touchmoveHandle = function(e) {
-    console.log(e)
     if(this.lock) return;
     var touch = e.targetTouches[0],
         x = touch.pageX,
@@ -68,13 +66,13 @@
     this.hasmoved || (this.hasmoved = 1, Math.abs(offsetX) > Math.abs(offsetY) && e.preventDefault());
     if(offsetX <= -50) {
       // 向右
-      console.log("向右");
+      // console.log("向右");
       this.queue.unshift(this.queue.pop());
       this.lock = 1;
       this.swap("right");
     } else if(offsetX >= 50) {
       // 向左
-      console.log("向左");
+      // console.log("向左");
       this.queue.push(this.queue.shift());
       this.lock = 1;
       this.swap("left");
