@@ -38,15 +38,15 @@
       }
       return arr;
     })(this.item.length);
-    console.log(this.queue)
     this.virtual = new Array(this.item.length);
     this.swap();
     if(this.item.length <= 1) reutrn;
-    this.container.addEventListener("touchstart", this.touchstartHandle);
-    this.container.addEventListener("touchmove", this.touchmoveHandle);
+    this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
+    this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
   mSwiper.prototype.touchstartHandle = function(e) {
+    console.log(e)
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY;
@@ -57,6 +57,7 @@
   }
 
   mSwiper.prototype.touchmoveHandle = function(e) {
+    console.log(e)
     if(this.lock) return;
     var touch = e.targetTouches[0],
         x = touch.pageX,
@@ -65,7 +66,7 @@
         offsetY = this.y0 - y;
     // 阻止滚动
     this.hasmoved || (this.hasmoved = 1, Math.abs(offsetX) > Math.abs(offsetY) && e.preventDefault());
-    if(offsetX <= 50) {
+    if(offsetX <= -50) {
       // 向右
       console.log("向右");
       this.queue.unshift(this.queue.pop());
@@ -76,20 +77,20 @@
       console.log("向左");
       this.queue.push(this.queue.shift());
       this.lock = 1;
-      swap("left");
+      this.swap("left");
     }
   }
 
   mSwiper.prototype.swap = function(description) {
-    var queue = [].concat(this.queue),
+    var oQueue = [].concat(this.queue),
         total = this.virtual.length, // item总数
         last = total - 1, //最后一个索引
         collect = 0,
         virtual = new Array(total),
         odd = 1;
     // 提取前三个元素与后三个元素
-    while(collect < 5 && queue.length > 0) {
-      virtual[odd ? queue.shift() : queue.pop()] = this.css[collect == last && !odd && "right" == orientation ? ++collect : collect++]; // 做一个方向优化
+    while(collect < 5 && oQueue.length > 0) {
+      virtual[odd ? oQueue.shift() : oQueue.pop()] = this.css[collect == last && !odd && "right" == orientation ? ++collect : collect++]; // 做一个方向优化
       odd = !odd;
     }
     // 对比下数组
