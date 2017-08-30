@@ -82,7 +82,7 @@
         last = total - 1, //最后一个索引
         collect = 0,
         virtual = new Array(total),
-        odd =1;
+        odd = 1;
     // 提取前三个元素与后三个元素
     while(collect < 5 && queue.length > 0) {
       virtual[odd ? queue.shift() : queue.pop()] = this.css[collect == last && !odd && "right" == orientation ? ++collect : collect++]; // 做一个方向优化
