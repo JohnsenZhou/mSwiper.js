@@ -2,13 +2,8 @@
  * mSwiper.js
  * @version 1.0.0
  */
-
 (function (name, definition) {
-  if (typeof definition === 'function') {
-    define(definition);
-  } else {
     this[name] = definition();
-  }
 })('mSwiper', function(){
   function mSwiper(selector) {
     this.container = document.querySelector(selector);
@@ -43,6 +38,7 @@
       }
       return arr;
     })(this.item.length);
+    console.log(this.queue)
     this.virtual = new Array(this.item.length);
     this.swap();
     if(this.item.length <= 1) reutrn;
@@ -72,11 +68,19 @@
     if(offsetX <= 50) {
       // 向右
       console.log("向右");
-
+      this.queue.unshift(this.queue.pop());
+      this.lock = 1;
+      this.swap("right");
+    } else if(offsetX >= 50) {
+      // 向左
+      console.log("向左");
+      this.queue.push(this.queue.shift());
+      this.lock = 1;
+      swap("left");
     }
   }
 
-  mSwiper.prototype.swap = function(orientation) {
+  mSwiper.prototype.swap = function(description) {
     var queue = [].concat(this.queue),
         total = this.virtual.length, // item总数
         last = total - 1, //最后一个索引
