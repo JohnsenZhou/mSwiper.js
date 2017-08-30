@@ -46,7 +46,6 @@
   }
 
   mSwiper.prototype.touchstartHandle = function(e) {
-    console.log(e)
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY;
@@ -57,7 +56,6 @@
   }
 
   mSwiper.prototype.touchmoveHandle = function(e) {
-    console.log(e)
     if(this.lock) return;
     var touch = e.targetTouches[0],
         x = touch.pageX,
