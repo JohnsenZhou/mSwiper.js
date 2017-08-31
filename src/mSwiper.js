@@ -3,7 +3,12 @@
  * @version 1.0.0
  */
 (function (name, definition) {
+  if (typeof define === 'function') {
+    define(definition);
+  } else {
     this[name] = definition();
+  }
+  module.exports = this.mSwiper;
 })('mSwiper', function(){
   function mSwiper(selector) {
     this.container = document.querySelector(selector);
@@ -23,7 +28,6 @@
     ];
 
     this._init();
-
   }
 
   mSwiper.prototype._init = function() {
