@@ -8,11 +8,12 @@
   } else {
     this[name] = definition();
   }
-  module.exports = this.mSwiper;
 })('mSwiper', function(){
-  function mSwiper(selector) {
-    this.container = document.querySelector(selector);
+  function mSwiper(options) {
+    this.container = document.querySelector(options.selector);
     this.item = this.container.querySelectorAll('li');
+    this.isAutoPlay = options.isAutoPlay ? options.isAutoPlay : false;
+    this.autoPlayTime = options.autoPlayTime ? options.autoPlayTime : 5000;
     this.x0 = 0;
     this.y0 = 0;
     this.hasmoved = 0;
@@ -45,6 +46,8 @@
     this.virtual = new Array(this.item.length);
     this.swap();
     if(this.item.length <= 1) reutrn;
+
+    this.isAutoPlay ? this.autoPlay() : '';
     this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
     this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
@@ -98,9 +101,18 @@
     // 对比下数组
     for(var i = 0; i < total; i++) {
       virtual[i] != this.virtual[i] && (this.virtual[i] = virtual[i], this.item[i].style.cssText = this.virtual[i] || "visibility: hidden");
-
     }
 
+  }
+
+  mSwiper.prototype.autoPlay = function() {
+    var that = this;
+    setInterval(function() {
+      that.queue.push(that.queue.shift());
+      that.lock = 1;
+      that.swap("left");
+    }, that.autoPlayTime);
+    
   }
 
   mSwiper.prototype.destory = function() {
