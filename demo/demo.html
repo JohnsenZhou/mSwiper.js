@@ -56,14 +56,18 @@
         <img src="http://jdc.jd.com/img/600x264?color=da8116&text=5">
       </li>
     </ul>
-    <script src="../src/mSwiper.js"></script>
+    <!-- 普通使用模式 -->
+    <script src="./js/mSwiper.js"></script>
     <script>
       var options = {
         selector: "#selector",  // 节点选择
         isAutoPlay: true,       // 是否自动播放
         autoPlayTime: 3000,     // 设置自动播放时间
+        isManual: true,        // 是否支持手动切换
       }
-      new mSwiper(options);
+      var mSwiper = new mSwiper(options);
     </script>
+    <!-- require.js使用模式 -->
+    <!-- <script src="./js/require.js" data-main="./js/main"></script> -->
   </body>
 </html>
