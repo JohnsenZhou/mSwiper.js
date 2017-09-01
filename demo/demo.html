@@ -25,10 +25,10 @@
   }
   li {
     position: absolute;
-    width: 5.4rem;
-    height: 6.6rem;
+    width: 10rem;
+    height: 5rem;
     left: 50%;
-    margin-left: -2.7rem;
+    margin-left: -5rem;
   }
   li img {
     display: block;
@@ -41,24 +41,29 @@
   <body>
     <ul id="selector">
       <li>
-        <img src="http://jdc.jd.com/img/216x264?color=ff736d&text=1">
+        <img src="http://jdc.jd.com/img/600x264?color=ff736d&text=1">
       </li>
       <li>
-        <img src="http://jdc.jd.com/img/216x264?color=4186c7&text=2">
+        <img src="http://jdc.jd.com/img/600x264?color=4186c7&text=2">
       </li>
       <li>
-        <img src="http://jdc.jd.com/img/216x264?color=f5d328&text=3">
+        <img src="http://jdc.jd.com/img/600x264?color=f5d328&text=3">
       </li>
       <li>
-        <img src="http://jdc.jd.com/img/216x264?color=65ac3a&text=4">
+        <img src="http://jdc.jd.com/img/600x264?color=65ac3a&text=4">
       </li>
       <li>
-        <img src="http://jdc.jd.com/img/216x264?color=da8116&text=5">
+        <img src="http://jdc.jd.com/img/600x264?color=da8116&text=5">
       </li>
     </ul>
-    <script src="../dist/mSwiper.js"></script>
+    <script src="../src/mSwiper.js"></script>
     <script>
-      var Swiper = new mSwiper("#selector");
+      var options = {
+        selector: "#selector",  // 节点选择
+        isAutoPlay: true,       // 是否自动播放
+        autoPlayTime: 3000,     // 设置自动播放时间
+      }
+      new mSwiper(options);
     </script>
   </body>
 </html>
