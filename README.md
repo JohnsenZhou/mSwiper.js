@@ -2,7 +2,7 @@
 
 [View README in English](https://github.com/JohnsenZhou/vue-mobile-starter/blob/master/README_en.md)
 
-> 移动端微型 **swiper** 插件，小而美，无依赖
+> 移动端微型 **swiper** 插件，小而美，无依赖.
 
 ## 效果演示
 [在线浏览Demo请戳这里](https://johnsenzhou.github.io/mSwiper.js/)
