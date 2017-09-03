@@ -58,7 +58,7 @@ require(['mSwiper'], function(mSwiper) {
 
 ## api
 
-### new sWiper(options)
+### new mSwiper(options)
 
 ``options`` 具体参数：
 
