@@ -64,10 +64,11 @@ require(['mSwiper'], function(mSwiper) {
 
 | 参数        | 类型           | 默认值  | 功能描述  |
 | ------------- |:-------------:| -----:| -----:|
-| selector      | String | #selector | 容器选择器  |
+| selector      | string | #selector | 容器选择器  |
 | isAutoPlay      | bool      |   false| 是否自动播放  |
 | isManual | bool      |    false | 是否支持手指滑动  |
 | autoPlayTime | number      |    5000 | 自动播放间隔时间  |
+| goDirection | string      |    left | 自动播放方向(left&right)  |
 
 ## License
 
