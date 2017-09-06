@@ -10,9 +10,11 @@
   }
 })('mSwiper', function(){
   function mSwiper(options) {
-    this.container = document.querySelector(options.selector);
+    this.container = options.selector ? document.querySelector(options.selector) : document.querySelector('#selector');
     this.item = this.container.querySelectorAll('li');
+    this.isManual = options.isManual ? options.isManual : false;
     this.isAutoPlay = options.isAutoPlay ? options.isAutoPlay : false;
+    this.goDirection = options.goDirection ? options.goDirection : 'left';
     this.autoPlayTime = options.autoPlayTime ? options.autoPlayTime : 5000;
     this.x0 = 0;
     this.y0 = 0;
@@ -48,8 +50,7 @@
     if(this.item.length <= 1) reutrn;
 
     this.isAutoPlay ? this.autoPlay() : '';
-    this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
-    this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
+    this.isManual ? this.manual() :this.destory();
   }
 
   mSwiper.prototype.touchstartHandle = function(e) {
@@ -108,16 +109,24 @@
   mSwiper.prototype.autoPlay = function() {
     var that = this;
     setInterval(function() {
-      that.queue.push(that.queue.shift());
+      that.goDirection === 'left' 
+        ? that.queue.push(that.queue.shift())
+        : that.goDirection === 'right'
+            ? that.queue.unshift(that.queue.pop()) 
+            : that.queue.push(that.queue.shift());;
       that.lock = 1;
-      that.swap("left");
+      that.swap(that.goDirection);
     }, that.autoPlayTime);
-    
+  }
+
+  mSwiper.prototype.manual = function() {
+    this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
+    this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
   mSwiper.prototype.destory = function() {
-    this.container.removeEventListener("touchstart", this.touchstartHandle);
-    this.container.removeEventListener("touchmove", this.touchmoveHandle);
+    this.container.removeEventListener("touchstart", this.touchstartHandle.bind(this));
+    this.container.removeEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
   mSwiper.prototype.rem = function(px) {

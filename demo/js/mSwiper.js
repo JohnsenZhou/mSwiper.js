@@ -14,6 +14,7 @@
     this.item = this.container.querySelectorAll('li');
     this.isManual = options.isManual ? options.isManual : false;
     this.isAutoPlay = options.isAutoPlay ? options.isAutoPlay : false;
+    this.goDirection = options.goDirection ? options.goDirection : 'left';
     this.autoPlayTime = options.autoPlayTime ? options.autoPlayTime : 5000;
     this.x0 = 0;
     this.y0 = 0;
@@ -108,11 +109,14 @@
   mSwiper.prototype.autoPlay = function() {
     var that = this;
     setInterval(function() {
-      that.queue.push(that.queue.shift());
+      that.goDirection === 'left' 
+        ? that.queue.push(that.queue.shift())
+        : that.goDirection === 'right'
+            ? that.queue.unshift(that.queue.pop()) 
+            : that.queue.push(that.queue.shift());;
       that.lock = 1;
-      that.swap("left");
+      that.swap(that.goDirection);
     }, that.autoPlayTime);
-    
   }
 
   mSwiper.prototype.manual = function() {
