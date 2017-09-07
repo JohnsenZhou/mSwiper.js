@@ -30,10 +30,10 @@
       "-webkit-transition: -webkit-transform .3s ease; z-index: 1; -webkit-transform: translate3d(" + this.rem(240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;"
     ];
 
-    this._init();
+    this.init();
   }
 
-  mSwiper.prototype._init = function() {
+  mSwiper.prototype.init = function init() {
     this.container.style["-webkit-transform-style"] = "preserve-3d";
     for(var i = 0; i < this.item.length; i ++) {
       this.item[i].style.visibility = "hidden"
@@ -53,7 +53,7 @@
     this.isManual ? this.manual() :this.destory();
   }
 
-  mSwiper.prototype.touchstartHandle = function(e) {
+  mSwiper.prototype.touchstartHandle = function touchstartHandle(e) {
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY;
@@ -63,7 +63,7 @@
     this.lock = 0;
   }
 
-  mSwiper.prototype.touchmoveHandle = function(e) {
+  mSwiper.prototype.touchmoveHandle = function touchmoveHandle(e) {
     if(this.lock) return;
     var touch = e.targetTouches[0],
         x = touch.pageX,
@@ -87,7 +87,7 @@
     }
   }
 
-  mSwiper.prototype.swap = function(description) {
+  mSwiper.prototype.swap = function swap(description) {
     var oQueue = [].concat(this.queue),
         total = this.virtual.length, // item总数
         last = total - 1, //最后一个索引
@@ -106,30 +106,29 @@
 
   }
 
-  mSwiper.prototype.autoPlay = function() {
-    var that = this;
+  mSwiper.prototype.autoPlay = function autoPlay() {
     setInterval(function() {
-      that.goDirection === 'left' 
-        ? that.queue.push(that.queue.shift())
-        : that.goDirection === 'right'
-            ? that.queue.unshift(that.queue.pop()) 
-            : that.queue.push(that.queue.shift());;
-      that.lock = 1;
-      that.swap(that.goDirection);
-    }, that.autoPlayTime);
+      this.goDirection === 'left' 
+        ? this.queue.push(this.queue.shift())
+        : this.goDirection === 'right'
+            ? this.queue.unshift(this.queue.pop()) 
+            : this.queue.push(this.queue.shift());;
+      this.lock = 1;
+      this.swap(this.goDirection);
+    }.bind(this), this.autoPlayTime);
   }
 
-  mSwiper.prototype.manual = function() {
+  mSwiper.prototype.manual = function manual() {
     this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
     this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
-  mSwiper.prototype.destory = function() {
+  mSwiper.prototype.destory = function destory() {
     this.container.removeEventListener("touchstart", this.touchstartHandle.bind(this));
     this.container.removeEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
-  mSwiper.prototype.rem = function(px) {
+  mSwiper.prototype.rem = function rem(px) {
     return px / 40 + "rem";
   }
   
