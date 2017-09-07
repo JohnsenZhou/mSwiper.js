@@ -2,8 +2,6 @@
 
 [View README in Chinese](https://github.com/JohnsenZhou/mSwiper.js/blob/master/README.md)
 
-[项目地址](https://github.com/JohnsenZhou/mSwiper.js)
-
 > A mini **swiper** for mobile, no dependent.
 
 ## Result
