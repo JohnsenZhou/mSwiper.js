@@ -1,0 +1,28 @@
+{
+  "name": "mswiper",
+  "version": "1.1.1",
+  "description": "A mini swiper for mobile, no dependent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnsenZhou/mSwiper.js.git"
+  },
+  "keywords": [
+    "swiper"
+  ],
+  "author": "Johnsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JohnsenZhou/mSwiper.js/issues"
+  },
+  "homepage": "https://github.com/JohnsenZhou/mSwiper.js#readme",
+  "devDependencies": {
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
