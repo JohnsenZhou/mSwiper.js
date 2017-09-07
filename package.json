@@ -22,7 +22,10 @@
   },
   "homepage": "https://github.com/JohnsenZhou/mSwiper.js#readme",
   "devDependencies": {
-    "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "gulp-rename": "^1.2.2"
   }
 }
