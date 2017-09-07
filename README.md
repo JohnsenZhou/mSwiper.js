@@ -18,19 +18,19 @@
 ```
 <ul id="selector">
   <li>
-    <img src="http://jdc.jd.com/img/600x264?color=ff736d&text=1">
+    <img src="./img/1.jpg">
   </li>
   <li>
-    <img src="http://jdc.jd.com/img/600x264?color=4186c7&text=2">
+    <img src="./img/2.jpg">
   </li>
   <li>
-    <img src="http://jdc.jd.com/img/600x264?color=f5d328&text=3">
+    <img src="./img/3.jpg">
   </li>
   <li>
-    <img src="http://jdc.jd.com/img/600x264?color=65ac3a&text=4">
+    <img src="./img/4.jpg">
   </li>
   <li>
-    <img src="http://jdc.jd.com/img/600x264?color=da8116&text=5">
+    <img src="./img/5.jpg">
   </li>
 </ul>
 <script src="../src/mSwiper.js"></script>
