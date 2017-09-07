@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JohnsenZhou/mSwiper.js.git"
+    "url": "https://github.com/JohnsenZhou/mSwiper.js.git"
   },
   "keywords": [
     "swiper"
@@ -23,9 +23,7 @@
   "homepage": "https://github.com/JohnsenZhou/mSwiper.js#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-uglify": "^3.0.0"
-  },
-  "dependencies": {
+    "gulp-uglify": "^3.0.0",
     "gulp-rename": "^1.2.2"
   }
 }
