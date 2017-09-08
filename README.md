@@ -11,6 +11,26 @@
 ### 手机浏览请扫描下方二维码
 ![在线浏览](https://raw.githubusercontent.com/JohnsenZhou/NodeApp-Deploy/img/swiper.png)
 
+## 开发
+
+``` bash
+# 克隆本仓库
+git clone https://github.com/JohnsenZhou/mSwiper.js.git
+
+# 进入仓库目录
+cd mSwiper.js
+
+# 安装依赖
+npm install
+
+# 启动项目，本地浏览地址 => localhost:8080
+gulp
+
+# 打包压缩
+gulp build
+
+```
+
 
 ## 安装
 前往 **[release](https://github.com/JohnsenZhou/mSwiper.js/releases)** 下载所需版本。
@@ -58,7 +78,7 @@ require(['mSwiper'], function(mSwiper) {
 })
 ```
 
-## api
+## Api
 
 ### new mSwiper(options)
 
