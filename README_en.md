@@ -9,6 +9,25 @@
 ### Scaning ths qrcode with you phone
 ![在线浏览](https://raw.githubusercontent.com/JohnsenZhou/NodeApp-Deploy/img/swiper.png)
 
+## Develop
+
+``` bash
+# clone the repository
+git clone https://github.com/JohnsenZhou/mSwiper.js.git
+
+# go to the repository catalog
+cd mSwiper.js
+
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+gulp
+
+# build for production with minification
+gulp build
+
+```
 
 ## Download
 Go to **[release](https://github.com/JohnsenZhou/mSwiper.js/releases)** to download which version you need.
