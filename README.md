@@ -1,3 +1,0 @@
-# mSwiper.js
-
-## 
