@@ -1,15 +1,47 @@
 # mSwiper.js
 
+![npm](https://img.shields.io/badge/npm-5.3.0-blue.svg)
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
+[![downloads](https://img.shields.io/badge/downloads-3k-brightgreen.svg)](https://github.com/JohnsenZhou/mSwiper.js/releases/tag/v1.1.2)
+
 [View README in English](https://github.com/JohnsenZhou/mSwiper.js/blob/master/README_en.md)
 
 [项目地址](https://github.com/JohnsenZhou/mSwiper.js)
 
 > 移动端微型 **swiper** 插件，小而美，无依赖.
 
+## 前言
+
+**mSwiper** 相对于其他的swiper插件而言，最大的优势就是 **小**，压缩后仅 **3k** ,能满足部分开发需求。插件的开发采用 **组合使用构造函数模式和原型模式**，通过 **Gulp** 构建，感兴趣的可以阅读源码🦄。欢迎 **star** 🌟
+
+> 若有问题，请提issue
+
 ## 效果演示
+
 [在线浏览Demo请戳这里](https://johnsenzhou.github.io/mSwiper.js/)
+
 ### 手机浏览请扫描下方二维码
 ![在线浏览](https://raw.githubusercontent.com/JohnsenZhou/NodeApp-Deploy/img/swiper.png)
+
+## 开发
+
+``` bash
+# 克隆本仓库
+git clone https://github.com/JohnsenZhou/mSwiper.js.git
+
+# 进入仓库目录
+cd mSwiper.js
+
+# 安装依赖
+npm install
+
+# 启动项目，本地浏览地址 => localhost:8080
+gulp
+
+# 打包压缩
+gulp build
+
+```
 
 
 ## 安装
@@ -58,7 +90,7 @@ require(['mSwiper'], function(mSwiper) {
 })
 ```
 
-## api
+## Api
 
 ### new mSwiper(options)
 
