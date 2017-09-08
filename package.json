@@ -22,8 +22,14 @@
   },
   "homepage": "https://github.com/JohnsenZhou/mSwiper.js#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-rename": "^1.2.2"
-  }
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {}
 }
