@@ -1,8 +1,5 @@
-# mSwiper.js
+# mSwiper.js • [![downloads](https://img.shields.io/badge/downloads-3k-brightgreen.svg)](https://github.com/JohnsenZhou/mSwiper.js/releases/tag/v1.1.2)    [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnsenZhou/mSwiper.js/blob/master/LICENSE)
 
-![npm](https://img.shields.io/badge/npm-5.3.0-blue.svg)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnsenZhou/mSwiper.js/blob/master/LICENSE)
-[![downloads](https://img.shields.io/badge/downloads-3k-brightgreen.svg)](https://github.com/JohnsenZhou/mSwiper.js/releases/tag/v1.1.2)
 
 [View README in Chinese](https://github.com/JohnsenZhou/mSwiper.js/blob/master/README.md)
 
