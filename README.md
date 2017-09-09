@@ -1,4 +1,4 @@
-# mSwiper.js &middot; [![downloads](https://img.shields.io/badge/downloads-3k-brightgreen.svg)](https://github.com/JohnsenZhou/mSwiper.js/releases/tag/v1.1.2)    [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnsenZhou/mSwiper.js/blob/master/LICENSE)
+# mSwiper.js &middot; [![downloads](https://img.shields.io/badge/downloads-1.2k-brightgreen.svg)](https://github.com/JohnsenZhou/mSwiper.js/releases/tag/v1.1.2)    [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnsenZhou/mSwiper.js/blob/master/LICENSE)
 
 [View README in English](https://github.com/JohnsenZhou/mSwiper.js/blob/master/README_en.md)
 
@@ -8,7 +8,7 @@
 
 ## 前言
 
-**mSwiper** 相对于其他的swiper插件而言，最大的优势就是 **小**，压缩后仅 **3k** ,能满足部分开发需求。插件的开发采用 **组合使用构造函数模式和原型模式**，通过 **Gulp** 构建，感兴趣的可以阅读源码🦄。欢迎 **star** 🌟
+**mSwiper** 相对于其他的swiper插件而言，最大的优势就是 **小**，压缩后仅 **1.2k** ,能满足部分开发需求。插件的开发采用 **组合使用构造函数模式和原型模式**，通过 **Gulp** 构建，感兴趣的可以阅读源码🦄。欢迎 **star** 🌟
 
 > 若有问题，请提issue
 
