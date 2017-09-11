@@ -63,7 +63,7 @@ Go to **[release](https://github.com/JohnsenZhou/mSwiper.js/releases)** to downl
   var mSwiper = new mSwiper(options);
 </script>
 ```
-**mSwiper** is also supported ``AMD`` standard，you can use ``require.js`` to load it：
+**mSwiper** is also supported ``AMD`` and ``CommonJS`` standard，you can use ``require.js`` to load it：
 
 ```
 require(['mSwiper'], function(mSwiper) {

@@ -73,7 +73,7 @@ gulp build
   var mSwiper = new mSwiper(options);
 </script>
 ```
-**mSwiper** 同时也支持 ``AMD`` 规范，你可以通过 ``require.js`` 进行加载使用：
+**mSwiper** 同时也支持 ``AMD`` 与 ``CommonJS`` 规范，你可以通过 ``require.js`` 进行加载使用：
 
 ```
 require(['mSwiper'], function(mSwiper) {
