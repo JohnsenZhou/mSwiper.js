@@ -1,0 +1,1 @@
+var mSwiper=require("../../mSwiper"),options={selector:"#selector",isAutoPlay:!0,autoPlayTime:3e3,isManual:!0};new mSwiper(options);

@@ -3,7 +3,16 @@
  * @version 1.0.0
  */
 (function (name, definition) {
-  if (typeof define === 'function') {
+
+  // Export the mSwiper object for **Node.js**, with
+  // backwards-compatibility for the old `require()` API. If we're in
+  // the browser, add `mSwiper` as a global object.
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = definition();
+    }
+    exports[name] = definition();
+  } else if (typeof define === 'function' && define.amd) {
     define(definition);
   } else {
     this[name] = definition();
@@ -23,10 +32,10 @@
     this.queue = [];
     this.virtual = [];
     this.css = [
-      "-webkit-transition: -webkit-transform .3s ease; z-index: 3; -webkit-transform: translate3d(0, 0, 10px) scale3d(1, 1, 1); visibility: visible;", 
-      "-webkit-transition: -webkit-transform .3s ease; z-index: 2; -webkit-transform: translate3d(" + this.rem(-148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;", 
-      "-webkit-transition: -webkit-transform .3s ease; z-index: 2; -webkit-transform: translate3d(" + this.rem(148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;", 
-      "-webkit-transition: -webkit-transform .3s ease; z-index: 1; -webkit-transform: translate3d(" + this.rem(-240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;", 
+      "-webkit-transition: -webkit-transform .3s ease; z-index: 3; -webkit-transform: translate3d(0, 0, 10px) scale3d(1, 1, 1); visibility: visible;",
+      "-webkit-transition: -webkit-transform .3s ease; z-index: 2; -webkit-transform: translate3d(" + this.rem(-148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;",
+      "-webkit-transition: -webkit-transform .3s ease; z-index: 2; -webkit-transform: translate3d(" + this.rem(148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;",
+      "-webkit-transition: -webkit-transform .3s ease; z-index: 1; -webkit-transform: translate3d(" + this.rem(-240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;",
       "-webkit-transition: -webkit-transform .3s ease; z-index: 1; -webkit-transform: translate3d(" + this.rem(240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;"
     ];
 
@@ -108,10 +117,10 @@
 
   mSwiper.prototype.autoPlay = function autoPlay() {
     setInterval(function() {
-      this.goDirection === 'left' 
+      this.goDirection === 'left'
         ? this.queue.push(this.queue.shift())
         : this.goDirection === 'right'
-            ? this.queue.unshift(this.queue.pop()) 
+            ? this.queue.unshift(this.queue.pop())
             : this.queue.push(this.queue.shift());;
       this.lock = 1;
       this.swap(this.goDirection);
@@ -131,6 +140,6 @@
   mSwiper.prototype.rem = function rem(px) {
     return px / 40 + "rem";
   }
-  
+
   return mSwiper;
 })

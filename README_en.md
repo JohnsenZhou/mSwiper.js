@@ -63,7 +63,7 @@ Go to **[release](https://github.com/JohnsenZhou/mSwiper.js/releases)** to downl
   var mSwiper = new mSwiper(options);
 </script>
 ```
-**mSwiper** is also supported ``AMD`` standard，you can use ``require.js`` to load it：
+**mSwiper** is also supported ``AMD`` and ``CommonJS`` standard，you can use ``require.js`` to load it：
 
 ```
 require(['mSwiper'], function(mSwiper) {
@@ -74,6 +74,17 @@ require(['mSwiper'], function(mSwiper) {
   }
   var mSwiper = new mSwiper(options);
 })
+```
+
+and use ``browserify`` to bundle it:
+```
+var mSwiper = require('mSwiper');
+var options = {
+  selector: "#selector",  // 节点选择
+  isAutoPlay: true,       // 是否自动播放
+  autoPlayTime: 3000,     // 设置自动播放时间
+}
+new mSwiper(options);
 ```
 
 ## Api
