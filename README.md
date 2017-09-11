@@ -73,7 +73,7 @@ gulp build
   var mSwiper = new mSwiper(options);
 </script>
 ```
-**mSwiper** 同时也支持 ``AMD`` 规范，你可以通过 ``require.js`` 进行加载使用：
+**mSwiper** 同时也支持 ``AMD`` 与 ``CommonJS`` 规范，你可以通过 ``require.js`` 进行加载使用：
 
 ```
 require(['mSwiper'], function(mSwiper) {
@@ -84,6 +84,17 @@ require(['mSwiper'], function(mSwiper) {
   }
   var mSwiper = new mSwiper(options);
 })
+```
+
+以及通过 ``browserify`` 进行打包使用：
+```
+var mSwiper = require('mSwiper');
+var options = {
+  selector: "#selector",  // 节点选择
+  isAutoPlay: true,       // 是否自动播放
+  autoPlayTime: 3000,     // 设置自动播放时间
+}
+new mSwiper(options);
 ```
 
 ## Api

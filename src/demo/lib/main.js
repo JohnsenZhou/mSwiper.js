@@ -1,4 +1,4 @@
-require(['mSwiper'], function(mSwiper) {
+require(['../../../mSwiper'], function(mSwiper) {
   var options = {
     selector: "#selector",  // 节点选择
     isAutoPlay: true,       // 是否自动播放

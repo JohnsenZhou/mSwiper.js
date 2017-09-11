@@ -1,3 +1,4 @@
+const browserify = require('browserify');
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify');
@@ -6,6 +7,7 @@ const revCollector = require('gulp-rev-collector');
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
+const source = require('vinyl-source-stream');
 
 const PATH = {
   IMG: 'dist/demo/img',
@@ -15,7 +17,7 @@ const PATH = {
   REV: './rev/js'
 }
 
-gulp.task('dev', ['min-js', 'min-img', 'rev'], () => {
+gulp.task('dev', ['bundle', 'min-js', 'min-img', 'rev'], () => {
   browserSync.init({
     server: {
       baseDir: './src'
@@ -36,6 +38,18 @@ gulp.task('dev', ['min-js', 'min-img', 'rev'], () => {
 gulp.task('file-watch', (done) => {
   browserSync.reload();
   done();
+})
+
+gulp.task('bundle', () => {
+  var customOpts = {
+    entries: ['./src/demo/lib/cmd.js'],
+    debug: true
+  }
+  var b = browserify(customOpts);
+  return b
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(gulp.dest('./src/demo/lib'));
 })
 
 gulp.task('min-js', () => {
