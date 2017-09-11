@@ -15,7 +15,7 @@ const PATH = {
   REV: './rev/js'
 }
 
-gulp.task('dev', ['min-js', 'min-img', 'rev'], () => {
+gulp.task('dev', () => {
   browserSync.init({
     server: {
       baseDir: './src'

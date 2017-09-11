@@ -3,7 +3,11 @@
  * @version 1.0.0
  */
 (function (name, definition) {
-  if (typeof define === 'function') {
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = definition();
+    }
+  } else if (typeof define === 'function') {
     define(definition);
   } else {
     this[name] = definition();
