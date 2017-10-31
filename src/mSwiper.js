@@ -20,6 +20,7 @@
     this.isAutoPlay = options.isAutoPlay ? options.isAutoPlay : false;
     this.goDirection = options.goDirection ? options.goDirection : 'left';
     this.autoPlayTime = options.autoPlayTime ? options.autoPlayTime : 5000;
+    this.timer;
     this.x0 = 0;
     this.y0 = 0;
     this.hasmoved = 0;
@@ -69,6 +70,7 @@
 
   mSwiper.prototype.touchmoveHandle = function touchmoveHandle(e) {
     if(this.lock) return;
+    clearInterval(this.timer)
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY,
@@ -82,12 +84,14 @@
       this.queue.unshift(this.queue.pop());
       this.lock = 1;
       this.swap("right");
+      this.autoPlay();
     } else if(offsetX >= 50) {
       // 向左
       // console.log("向左");
       this.queue.push(this.queue.shift());
       this.lock = 1;
       this.swap("left");
+      this.autoPlay();
     }
   }
 
@@ -107,11 +111,10 @@
     for(var i = 0; i < total; i++) {
       virtual[i] != this.virtual[i] && (this.virtual[i] = virtual[i], this.item[i].style.cssText = this.virtual[i] || "visibility: hidden");
     }
-
   }
 
   mSwiper.prototype.autoPlay = function autoPlay() {
-    setInterval(function() {
+    this.timer = setInterval(function() {
       this.goDirection === 'left' 
         ? this.queue.push(this.queue.shift())
         : this.goDirection === 'right'
