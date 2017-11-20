@@ -16,6 +16,8 @@
 
 [在线浏览Demo请戳这里](https://johnsenzhou.github.io/mSwiper.js/)
 
+> PC端浏览请打开移动端调试页面
+
 ### 手机浏览请扫描下方二维码
 ![在线浏览](https://raw.githubusercontent.com/JohnsenZhou/NodeApp-Deploy/img/swiper.png)
 
