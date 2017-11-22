@@ -2,8 +2,6 @@
 
 [View README in English](https://github.com/JohnsenZhou/mSwiper.js/blob/master/README_en.md)
 
-[项目地址](https://github.com/JohnsenZhou/mSwiper.js)
-
 > 移动端微型 **swiper** 插件，小而美，无依赖.
 
 ## 前言
