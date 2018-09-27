@@ -34,8 +34,6 @@ npm install
 # 启动项目，本地浏览地址 => localhost:8080
 gulp
 
-# 打包压缩
-gulp build
 
 ```
 

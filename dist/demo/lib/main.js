@@ -1,1 +1,0 @@
-require(["mSwiper"],function(e){var e=new e({selector:"#selector",isAutoPlay:!0,autoPlayTime:3e3,isManual:!0})});

@@ -1,0 +1,9 @@
+{
+  "files": [
+      "src/mSwiper.ts"
+  ],
+  "compilerOptions": {
+      "noImplicitAny": true,
+      "target": "es5"
+  }
+}

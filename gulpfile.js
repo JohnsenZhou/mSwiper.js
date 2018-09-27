@@ -1,34 +1,49 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify');
-const rev = require('gulp-rev');
-const revCollector = require('gulp-rev-collector');
-const htmlmin = require('gulp-htmlmin');
-const imagemin = require('gulp-imagemin');
+const header = require('gulp-header');
 const rename = require('gulp-rename');
+const ts = require("gulp-typescript");
+const tsProject = ts.createProject("tsconfig.json");
 
 const PATH = {
-  IMG: 'dist/demo/img',
-  LIB: 'dist/demo/lib',
-  DIST: './dist',
-  INDEX: './dist/demo',
-  REV: './rev/js'
+  DIST: './dist'
 }
 
-gulp.task('dev', () => {
+// Metadata for build files
+const now = new Date();
+const TIMESTAMP = {
+  YEAR: now.getFullYear(),
+  MONTH: now.getMonth() + 1,
+  DAY: now.getDate()
+};
+
+const banner = `
+/**
+ * <%= pkg.name %> <%= pkg.version %>
+ *
+ * Copyright (c) ${TIMESTAMP.YEAR}, Johnsen zhou.
+ * All rights reserved.
+ *
+ * LICENSE
+ * build: ${TIMESTAMP.YEAR}-${TIMESTAMP.MONTH}-${TIMESTAMP.DAY}
+ */
+`;
+
+gulp.task('default', ['ts-compiler'], () => {
   browserSync.init({
     server: {
-      baseDir: './src'
+      baseDir: './'
     },
     ui: {
       port: 8080
     },
-    startPath: '/demo'
+    startPath: '/example'
   });
   gulp.watch([
-    './src/demo/lib/*.js',
-    './src/demo/img/*',
-    './src/demo/*.html',
+    './examples/lib/*.js',
+    './examples/img/*',
+    './examples/*.html',
     './src/*.js'
   ], ['file-watch'])
 })
@@ -38,45 +53,14 @@ gulp.task('file-watch', (done) => {
   done();
 })
 
-gulp.task('min-js', () => {
-  return gulp.src('./src/demo/lib/*.js')
-      .pipe(uglify())
-      .pipe(gulp.dest(PATH.LIB))
+gulp.task('ts-compiler', () => {
+  return tsProject.src()
+    .pipe(tsProject())
+    .js
+    .pipe(rename('mSwiper.min.js'))
+    // .pipe(uglify())
+    // .pipe(header(banner, {
+    //   'pkg': require('./package.json')
+    // }))
+    .pipe(gulp.dest(PATH.DIST))
 })
-
-gulp.task('min-img', () => {
-  return gulp.src('./src/demo/img/*')
-      .pipe(imagemin())
-      .pipe(gulp.dest(PATH.IMG))
-})
-
-gulp.task('rev-js', () => {
-  return gulp.src('./src/mSwiper.js')
-      .pipe(uglify())
-      .pipe(rev())
-      .pipe(gulp.dest('dist'))
-      .pipe(rev.manifest())
-      .pipe(gulp.dest(PATH.REV))
-})
-
-gulp.task('rev', ['rev-js'], () => {
-  return gulp.src(['rev/js/*.json', './src/demo/*.html'])
-      .pipe(revCollector())
-      .pipe(htmlmin({
-        minifyCSS: true,
-        minifyJS: true,
-        collapseWhitespace: true
-      }))
-      .pipe(gulp.dest(PATH.INDEX))
-})
-
-gulp.task('dist', () => {
-  gulp.src('src/*.js')
-      .pipe(rename('mSwiper.min.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest(PATH.DIST))
-})
-
-gulp.task('default', ['dev'])
-
-gulp.task('build', ['min-js', 'min-img', 'rev', 'dist'])

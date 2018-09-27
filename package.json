@@ -1,12 +1,11 @@
 {
   "name": "mswiper",
-  "version": "1.1.2",
-  "description": "A mini swiper for mobile, no dependent",
+  "version": "2.0.0",
+  "description": "A mini swiper for mobile, no dependents",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -24,12 +23,11 @@
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-imagemin": "^3.3.0",
+    "gulp-header": "^2.0.5",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^8.0.0",
-    "gulp-rev-collector": "^1.2.2",
-    "gulp-uglify": "^3.0.0"
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "gulp-uglify": "^3.0.0",
+    "typescript": "^3.0.3"
   },
   "dependencies": {}
 }

@@ -1,7 +1,9 @@
-/*!
- * mSwiper.js
- * @version 1.0.0
- */
+import { SwiperOptions } from './interface'
+
+declare let exports: any
+declare let module: any
+declare let define: any
+
 (function (name, definition) {
   if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
@@ -13,7 +15,7 @@
     this[name] = definition();
   }
 })('mSwiper', function(){
-  function mSwiper(options) {
+  function mSwiper(options: SwiperOptions) {
     this.container = options.selector ? document.querySelector(options.selector) : document.querySelector('#selector');
     this.item = this.container.querySelectorAll('li');
     this.isManual = options.isManual ? options.isManual : false;
@@ -52,13 +54,13 @@
     })(this.item.length);
     this.virtual = new Array(this.item.length);
     this.swap();
-    if(this.item.length <= 1) reutrn;
+    if(this.item.length <= 1) return;
 
     this.isAutoPlay ? this.autoPlay() : '';
-    this.isManual ? this.manual() :this.destory();
+    this.isManual ? this.manual() : this.destory();
   }
 
-  mSwiper.prototype.touchstartHandle = function touchstartHandle(e) {
+  mSwiper.prototype.touchstartHandle = function touchstartHandle(e: TouchEvent) {
     var touch = e.targetTouches[0],
         x = touch.pageX,
         y = touch.pageY;
@@ -68,7 +70,8 @@
     this.lock = 0;
   }
 
-  mSwiper.prototype.touchmoveHandle = function touchmoveHandle(e) {
+  mSwiper.prototype.touchmoveHandle = function touchmoveHandle(e: TouchEvent) {
+    console.log(e)
     if(this.lock) return;
     clearInterval(this.timer)
     var touch = e.targetTouches[0],
@@ -78,16 +81,14 @@
         offsetY = this.y0 - y;
     // 阻止滚动
     this.hasmoved || (this.hasmoved = 1, Math.abs(offsetX) > Math.abs(offsetY) && e.preventDefault());
-    if(offsetX <= -50) {
+    if(offsetX <= -100) {
       // 向右
-      // console.log("向右");
       this.queue.unshift(this.queue.pop());
       this.lock = 1;
       this.swap("right");
       this.autoPlay();
-    } else if(offsetX >= 50) {
+    } else if(offsetX >= 100) {
       // 向左
-      // console.log("向左");
       this.queue.push(this.queue.shift());
       this.lock = 1;
       this.swap("left");
@@ -95,13 +96,17 @@
     }
   }
 
-  mSwiper.prototype.swap = function swap(description) {
+  mSwiper.prototype.touchendHandle = function touchendHandle(e: TouchEvent) {
+    console.log(e)
+  }
+
+  mSwiper.prototype.swap = function swap() {
     var oQueue = [].concat(this.queue),
         total = this.virtual.length, // item总数
         last = total - 1, //最后一个索引
         collect = 0,
         virtual = new Array(total),
-        odd = 1;
+        odd = true;
     // 提取前三个元素与后三个元素
     while(collect < 5 && oQueue.length > 0) {
       virtual[odd ? oQueue.shift() : oQueue.pop()] = this.css[collect == last && !odd && "right" == orientation ? ++collect : collect++]; // 做一个方向优化
@@ -115,11 +120,9 @@
 
   mSwiper.prototype.autoPlay = function autoPlay() {
     this.timer = setInterval(function() {
-      this.goDirection === 'left' 
-        ? this.queue.push(this.queue.shift())
-        : this.goDirection === 'right'
-            ? this.queue.unshift(this.queue.pop()) 
-            : this.queue.push(this.queue.shift());;
+      this.goDirection === 'right'
+          ? this.queue.unshift(this.queue.pop()) 
+          : this.queue.push(this.queue.shift());;
       this.lock = 1;
       this.swap(this.goDirection);
     }.bind(this), this.autoPlayTime);
@@ -128,6 +131,7 @@
   mSwiper.prototype.manual = function manual() {
     this.container.addEventListener("touchstart", this.touchstartHandle.bind(this));
     this.container.addEventListener("touchmove", this.touchmoveHandle.bind(this));
+    this.container.addEventListener("touchend", this.touchendHandle.bind(this));
   }
 
   mSwiper.prototype.destory = function destory() {
@@ -135,7 +139,7 @@
     this.container.removeEventListener("touchmove", this.touchmoveHandle.bind(this));
   }
 
-  mSwiper.prototype.rem = function rem(px) {
+  mSwiper.prototype.rem = function rem(px: number) {
     return px / 40 + "rem";
   }
   
